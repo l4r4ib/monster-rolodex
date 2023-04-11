@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import CardList from './components/card-list/cardlist.component';
 import './App.css';
 
 class App extends Component {
@@ -10,10 +10,10 @@ class App extends Component {
         monsters: [ ],
         searchField: ''
     }
-    //console.log('state');
+    
   }
    componentDidMount(){
-     //console.log('componentdidmount');
+     
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response)=> response.json())
     .then((users)=>
@@ -45,9 +45,7 @@ class App extends Component {
         <input className='search-box' type='search' placeholder='search here'
         onChange={onSearchChange }
          />
-      {filteredMonsters.map((monster)=> {
-          return <div key= {monster.id}> <h1> {monster.name} </h1>  </div>
-      })}
+       <CardList monsters= { filteredMonsters } />
       </div>
     );
   }
@@ -55,3 +53,8 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
